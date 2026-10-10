@@ -9,8 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import com.mapconductor.core.map.MutableMapServiceRegistry
-import kotlinx.coroutines.MainScope
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
@@ -19,7 +17,11 @@ import com.mapconductor.core.map.MapCameraPosition
 import com.mapconductor.core.map.MapCameraPositionInterface
 import com.mapconductor.core.map.MapViewState
 import com.mapconductor.core.map.MapViewStateInterface
+import com.mapconductor.core.map.MapViewStyle
+import com.mapconductor.core.map.MapViewStyleEffect
+import com.mapconductor.core.map.MutableMapServiceRegistry
 import java.util.UUID
+import kotlinx.coroutines.MainScope
 
 /**
  * アプリ側の状態。
@@ -110,6 +112,18 @@ fun rememberTemplateMapViewState(
 fun TemplateMapView(
     state: TemplateMapViewState,
     modifier: Modifier = Modifier,
+    /**
+     * How the map looks, when the app states it rather than naming a design.
+     *
+     * Every provider takes this and every provider wires it the same way:
+     * one [MapViewStyleEffect] once the controller exists. What a style then
+     * does depends on what this backend declared it can do -- this one
+     * declares neither [com.mapconductor.core.map.VectorStyleSupportKey] nor
+     * [com.mapconductor.core.map.VectorStyleMutationSupportKey], so a style
+     * here goes through its rasteriser and arrives as raster tiles.
+     */
+    style: MapViewStyle? = null,
+    onStyleDiagnostics: ((List<String>) -> Unit)? = null,
 ) {
     val map = remember(state.id) { TemplateMap() }
     val revision = remember(state.id) { mutableIntStateOf(0) }
@@ -121,6 +135,13 @@ fun TemplateMapView(
                 state.setController(it)
             }
         }
+
+    MapViewStyleEffect(
+        state = state,
+        style = style,
+        controller = controller,
+        onDiagnostics = onStyleDiagnostics,
+    )
 
     TemplateMapCanvas(
         map = map,

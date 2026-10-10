@@ -200,7 +200,7 @@ public final class com.mapconductor.template.TemplateMapViewHolder implements co
 }
 public final class com.mapconductor.template.TemplateMapViewKt {
   public static final com.mapconductor.template.TemplateMapViewState rememberTemplateMapViewState(com.mapconductor.template.TemplateMapDesignType, com.mapconductor.core.map.MapCameraPositionInterface, androidx.compose.runtime.Composer, int, int);
-  public static final void TemplateMapView(com.mapconductor.template.TemplateMapViewState, androidx.compose.ui.Modifier, androidx.compose.runtime.Composer, int, int);
+  public static final void TemplateMapView(com.mapconductor.template.TemplateMapViewState, androidx.compose.ui.Modifier, com.mapconductor.core.map.MapViewStyle, kotlin.jvm.functions.Function1<? super java.util.List<java.lang.String>, kotlin.Unit>, androidx.compose.runtime.Composer, int, int);
   public static final com.mapconductor.template.TemplateMapViewController createTemplateViewController(com.mapconductor.template.TemplateMap, com.mapconductor.core.map.MutableMapServiceRegistry);
   public static final void TemplateMapCanvas(com.mapconductor.template.TemplateMap, com.mapconductor.template.TemplateMapDesignType, int, com.mapconductor.template.TemplateMapViewController, androidx.compose.ui.Modifier, androidx.compose.runtime.Composer, int, int);
 }
