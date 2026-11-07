@@ -204,6 +204,15 @@ public final class com.mapconductor.template.TemplateMapViewKt {
   public static final com.mapconductor.template.TemplateMapViewController createTemplateViewController(com.mapconductor.template.TemplateMap, com.mapconductor.core.map.MutableMapServiceRegistry);
   public static final void TemplateMapCanvas(com.mapconductor.template.TemplateMap, com.mapconductor.template.TemplateMapDesignType, int, com.mapconductor.template.TemplateMapViewController, androidx.compose.ui.Modifier, androidx.compose.runtime.Composer, int, int);
 }
+public final class com.mapconductor.template.TemplateMapViewSaver extends com.mapconductor.compose.map.BaseMapViewSaver<com.mapconductor.template.TemplateMapViewState> {
+  public com.mapconductor.template.TemplateMapViewSaver();
+  protected void saveMapDesign(com.mapconductor.template.TemplateMapViewState, android.os.Bundle);
+  protected com.mapconductor.template.TemplateMapViewState createState(java.lang.String, android.os.Bundle, com.mapconductor.core.map.MapCameraPosition);
+  protected java.lang.String getStateId(com.mapconductor.template.TemplateMapViewState);
+  public void saveMapDesign(com.mapconductor.core.map.MapViewStateInterface, android.os.Bundle);
+  public com.mapconductor.core.map.MapViewStateInterface createState(java.lang.String, android.os.Bundle, com.mapconductor.core.map.MapCameraPosition);
+  public java.lang.String getStateId(com.mapconductor.core.map.MapViewStateInterface);
+}
 public final class com.mapconductor.template.TemplateMapViewScope extends com.mapconductor.compose.MapViewScope {
   public com.mapconductor.template.TemplateMapViewScope();
 }
