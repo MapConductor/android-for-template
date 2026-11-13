@@ -147,6 +147,8 @@ class TemplateMapViewController(
         circleController.clear()
         groundImageController.clear()
         rasterLayerController.clear()
+        // 拡張モジュール（クラスタリングなど）が登録した Strategy のマーカーも消す。
+        clearStrategyMarkerControllers()
     }
 
     /**
